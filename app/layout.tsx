@@ -1,3 +1,5 @@
+import { Navbar } from './components/navbar'
+import { SideBar } from './components/sidebar'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -10,7 +12,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="flex">
+          <SideBar />
+          <div className='w-full'>
+            <Navbar />
+            <div className='w-full bg-[#F5F5F7]'>
+              {children}
+            </div>
+          </div>
+        </div>
+      </body>
     </html>
   )
 }
