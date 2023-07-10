@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .nav-icons li{
-    @apply cursor-pointer hover:bg-gradient-to-r from-purple-500 to-pink-500 h-12 flex
+    @apply cursor-pointer hover:bg-gradient-to-r from-dark-purple to-light-purple h-12 flex justify-center items-center
 }
 
 .nav-icons li img{
@@ -11,9 +11,9 @@
 }
 
 .active {
-    @apply bg-gradient-to-r from-purple-500 to-pink-500
+    @apply bg-gradient-to-r from-dark-purple to-light-purple
 }
 
 .level {
-    @apply lg:text-base 2xl:text-lg text-[#6A6A6A]
+    @apply lg:text-base 2xl:text-lg text-light-gray
 }
