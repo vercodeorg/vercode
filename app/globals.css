@@ -17,3 +17,7 @@
 .level {
     @apply lg:text-base 2xl:text-lg text-light-gray
 }
+
+.icons {
+    @apply text-white w-7
+}
