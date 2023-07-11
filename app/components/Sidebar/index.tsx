@@ -10,8 +10,12 @@ import { RectangleStackIcon } from "@heroicons/react/24/outline"
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline"
 
 export const SideBar = () => {
-
+    
     const pathname = usePathname()
+    function activeCondition(name: string) {
+        return pathname == name ? "active" : ""
+    }
+    
     return (
         <div className="bg-[#202020] xl:w-14">
             <nav>
@@ -22,23 +26,25 @@ export const SideBar = () => {
                 </div>
                 <ul className="flex flex-col gap-8 nav-icons">
                     <Link href={"/user"}>
-                        <li className={pathname == "/user" ? "active" : "w-full"}>
-                            <UserIcon className="text-white w-7"/>
+                        <li className={activeCondition("/user")}>
+                            <UserIcon className="icons" />
                         </li>
                     </Link>
                     <li>
-                        <CubeTransparentIcon className="text-white w-7" />
+                        <CubeTransparentIcon className="icons" />
                     </li>
-                    <li>
-                        <FolderOpenIcon className="text-white w-7"/>
-                    </li>
+                    <Link href={"/projects"}>
+                        <li className={activeCondition("/projects")}>
+                            <FolderOpenIcon className="icons" />
+                        </li>
+                    </Link>
                     <Link href={"/levels"}>
-                        <li className={pathname == "/levels" ? "active" : ""}>
-                            <RectangleStackIcon className="text-white w-7"/>
+                        <li className={activeCondition("/levels")}>
+                            <RectangleStackIcon className="icons" />
                         </li>
                     </Link>
                     <li>
-                        <ChatBubbleLeftRightIcon className="text-white w-7" />
+                        <ChatBubbleLeftRightIcon className="icons" />
                     </li>
                 </ul>
             </nav>
