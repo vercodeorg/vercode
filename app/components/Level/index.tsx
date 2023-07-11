@@ -16,7 +16,7 @@ const Level = ({levelName}: {levelName: string}) => {
                 </div>
                 <div className="flex gap-8">
                     <span className="font-medium lg:text-base 2xl:text-xl text-light-gray">Projects 0/25</span>
-                    <Status name={STATUS.IN_PROGRESS} />
+                    <Status statusName={STATUS.IN_PROGRESS} />
                 </div>
             </div>
         </Link>
