@@ -17,7 +17,7 @@ export const SideBar = () => {
     }
     
     return (
-        <div className="bg-[#202020] xl:w-14">
+        <div className="bg-black xl:w-14">
             <nav>
                 <div className="xl:w-8 mx-auto pt-4 pb-16 cursor-pointer">
                     <Link href={"/"}>
