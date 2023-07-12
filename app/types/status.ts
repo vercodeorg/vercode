@@ -1,6 +1,7 @@
 export enum STATUS {
     IN_PROGRESS = "In Progress",
-    COMPLETE = "Complete"
+    COMPLETE = "Complete",
+    BLOCKED = "Blocked"
 }
 
 export function getColor(E: STATUS){
