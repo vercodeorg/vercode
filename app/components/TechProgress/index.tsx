@@ -5,7 +5,7 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 const TechProgress = () => {
     return (
-        <div className="lg:col-span-7 2xl:col-span-3 row-span-1 bg-gray-background relative rounded-3xl px-8 pt-6 pb-3">
+        <div className="lg:col-span-7 2xl:col-span-3 row-span-1 bg-cleaner-gray relative rounded-3xl px-8 pt-6 pb-3">
             <h2 className="font-semibold xl:text-2xl text-dark-gray tracking-tight">Tech Progress</h2>
             <div>
                 <div className="lg:pt-2 2xl:pt-5">
@@ -19,7 +19,7 @@ const TechProgress = () => {
             </div>
             <a href="">
                 <div className="lg:w-8 2xl:w-10 bg-strong-gray rounded-full float-right mt-4">
-                    <ChevronRightIcon className="text-gray-background translate-x-[2px]"/>
+                    <ChevronRightIcon className="text-cleaner-gray translate-x-[2px]"/>
                 </div>
             </a>
         </div>
