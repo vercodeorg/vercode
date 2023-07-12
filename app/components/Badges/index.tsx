@@ -12,7 +12,7 @@ const Badges = () => {
                 </div>
                 <div className="">
                     <h3 className="font-extrabold text-dark-gray xl:text-xl">PRO</h3>
-                    <span className="font-semibold text-medium-gray xl:text-sm">RANK - LV 10</span>
+                    <span className="font-semibold text-medium-gray lg:text-sm 2xl:text-base">RANK - LV 10</span>
                 </div>
             </div>
             <a href="">

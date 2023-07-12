@@ -2,7 +2,7 @@ import { DIFFICULTY, getColor } from "@/app/types/difficulty"
 
 const Difficulty = ({level}: {level: DIFFICULTY}) => {   
     return (
-        <div className="flex gap-2 items-center mb-3">
+        <div className="flex gap-2 items-center">
             <span className="font-normal 2xl:text-sm text-white">
                 Difficulty:
             </span>
