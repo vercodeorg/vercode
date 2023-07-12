@@ -10,9 +10,9 @@ module.exports = {
       colors: {
         'dark-gray': '#1A1A1A',
         'strong-gray': '#31353A',
-        'medium-gray': '#D9D9D9',
-        'light-gray': '#6A6A6A',
-        'gray-background': '#F5F5F7',
+        'medium-gray': '#6A6A6A',
+        'light-gray': '#D9D9D9',
+        'cleaner-gray': '#F5F5F7',
         'dark-purple': '#3F0065',
         'light-purple': '#B911F3',
         'level-easy': '#34B949',

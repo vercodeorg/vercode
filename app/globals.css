@@ -15,7 +15,7 @@
 }
 
 .level {
-    @apply lg:text-base 2xl:text-lg text-light-gray
+    @apply lg:text-base 2xl:text-lg text-medium-gray
 }
 
 .icons {

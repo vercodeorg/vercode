@@ -12,7 +12,7 @@ const ProjectProgressBar = () => {
                     </div>
                 </div>
             </div>
-            <div className="grid bg-medium-gray w-full h-4 rounded-xl">
+            <div className="grid bg-light-gray w-full h-4 rounded-xl">
                 <div className="bg-gradient-to-r from-dark-purple to-light-purple relative w-3/3 h-4 rounded-xl"></div>
             </div>
             <span className="font-normal lg:text-xs 2xl:text-sm text-white mb-1">5.000/5.000 Exp</span>
