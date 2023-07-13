@@ -1,6 +1,8 @@
 import Image from "next/image"
 import vercodeLogo from "../../assets/img/Logo.png"
 import vcoin from "../../assets/icons/vcoin.svg"
+import userPic from "../../../public/eu3.jpeg"
+import Link from "next/link"
 
 export const Navbar = () => {
     return (
@@ -14,8 +16,10 @@ export const Navbar = () => {
                     <Image src={vcoin} alt="coin-icon" width={25} />
                 </div>
                 <div className="flex items-center gap-2">
-                    <p className="text-sm">your name</p>
-                    <div className="rounded-full w-9 h-9 bg-gradient-to-r from-purple-500 to-pink-500"/>
+                    <p className="text-sm">Pedro Henrique</p>
+                    <Link href={"/user"}>
+                        <Image src={userPic} alt="user-photo" className="rounded-full" width={36} height={36} />
+                    </Link>
                 </div>
             </div>
         </div>

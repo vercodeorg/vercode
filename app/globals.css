@@ -21,3 +21,7 @@
 .icons {
     @apply text-white w-7
 }
+
+.project-description{
+    @apply font-semibold 2xl:text-base lg:text-sm text-white
+}
