@@ -12,9 +12,6 @@ import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline"
 export const SideBar = () => {
     
     const pathname = usePathname()
-    function activeCondition(name: string) {
-        return pathname == name ? "active" : ""
-    }
     
     return (
         <div className="bg-black xl:w-14">
@@ -26,7 +23,7 @@ export const SideBar = () => {
                 </div>
                 <ul className="flex flex-col gap-8 nav-icons">
                     <Link href={"/user"}>
-                        <li className={activeCondition("/user")}>
+                        <li className={pathname.startsWith("/user") ? "active": ""}>
                             <UserIcon className="icons" />
                         </li>
                     </Link>
@@ -34,12 +31,12 @@ export const SideBar = () => {
                         <CubeTransparentIcon className="icons" />
                     </li>
                     <Link href={"/projects"}>
-                        <li className={activeCondition("/projects")}>
+                        <li className={pathname.startsWith("/projects") ? "active": ""}>
                             <FolderOpenIcon className="icons" />
                         </li>
                     </Link>
                     <Link href={"/levels"}>
-                        <li className={activeCondition("/levels")}>
+                        <li className={pathname.startsWith("/levels") ? "active": ""}>
                             <RectangleStackIcon className="icons" />
                         </li>
                     </Link>
