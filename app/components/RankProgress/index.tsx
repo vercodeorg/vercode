@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Trophy from "../../assets/icons/Trophy.svg"
-import ProgressBar from "../ProgressBar"
+import ProgressBar from "../DefaultProgressBar"
 
 const RankProgress = () => {
     return (
