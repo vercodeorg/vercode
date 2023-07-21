@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Badge from "../../assets/icons/Badge.png"
 import SimpleProgressBar from '@/app/components/SimpleProgressBar';
 import LevelProject from '@/app/components/LevelProject';
+import { STATUS } from '@/app/types/status';
 
 const Level = ({params}: {params: {level: string}}) => {
     return (
@@ -14,10 +15,10 @@ const Level = ({params}: {params: {level: string}}) => {
             </div>
             <SimpleProgressBar/>
             <div className='w-full bg-white rounded-3xl mt-10 h-full px-14 py-10 flex flex-col gap-8'>
-                <LevelProject/>
-                <LevelProject/>
-                <LevelProject/>
-                <LevelProject/>
+                <LevelProject status={STATUS.COMPLETE}/>
+                <LevelProject status={STATUS.IN_PROGRESS}/>
+                <LevelProject status={STATUS.IN_PROGRESS}/>
+                <LevelProject status={STATUS.BLOCKED}/>
             </div>
         </div>
     )
