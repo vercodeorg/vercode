@@ -22,7 +22,7 @@ export const SideBar = () => {
                     </Link>
                 </div>
                 <ul className="flex flex-col gap-8 nav-icons">
-                    <Link href={"/user"}>
+                    <Link href={"/user"} className="user">
                         <li className={pathname.startsWith("/user") ? "active": ""}>
                             <UserIcon className="icons" />
                         </li>
@@ -30,12 +30,12 @@ export const SideBar = () => {
                     <li>
                         <CubeTransparentIcon className="icons" />
                     </li>
-                    <Link href={"/projects"}>
+                    <Link href={"/projects"} className="projects">
                         <li className={pathname.startsWith("/projects") ? "active": ""}>
                             <FolderOpenIcon className="icons" />
                         </li>
                     </Link>
-                    <Link href={"/levels"}>
+                    <Link href={"/levels"} className="levels">
                         <li className={pathname.startsWith("/levels") ? "active": ""}>
                             <RectangleStackIcon className="icons" />
                         </li>
