@@ -18,7 +18,6 @@ const JoyRideNoSSR = dynamic(
 
 export default function Home() {
 
-  const [isChecked, setIsChecked] = useState(false)
   const [{ run, sidebarOpen, stepIndex, steps }, setState] = useState<State>({
     run: false,
     sidebarOpen: false,
@@ -55,22 +54,35 @@ export default function Home() {
         title: "Página de Usuário"
       },
       {
+        content: "Além da página de usuário, aqui você sempre poderá ver sua quantidade atual de coins.",
+        placement: "bottom",
+        target: ".coins",
+        title: "Ganhe moedas!"
+      },
+      {
         content: "Esse foi seu tour aqui na plataforma, marque a caixa se não quiser mais ver esse tutorial. Aproveite o Vercode! 😄",
         placement: "center",
         target: "body",
         title: "Fim do Tour!"
-      },
-
+      }
     ]
   })
 
-  function handleCheckbox(){
+  function checkStore() {
+    if(localStorage.getItem("isChecked") === 'true'){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  function handleCheckbox() {
     localStorage.setItem('isChecked', 'true')
-    setIsChecked(true)
   }
   
   useEffect(() => {
-    if (localStorage.getItem('isChecked') === 'false') {
+    localStorage.setItem('isChecked', 'false')
+    if (localStorage.getItem('isChecked') == 'false') {
       setState({ run: true, sidebarOpen, stepIndex, steps })
     }
   }, [])
@@ -83,6 +95,15 @@ export default function Home() {
         steps={steps}
         scrollToFirstStep
         showSkipButton
+        locale={
+          {
+            next: 'Próximo',
+            back: 'Voltar',
+            close: 'Fechar',
+            skip: 'Pular',
+            last: 'Finalizar'
+          }
+        }
         styles={{
           options: {
             primaryColor: "#B911F3"
@@ -91,9 +112,11 @@ export default function Home() {
       />
       <div className="w-fit h-full mx-auto justify-self-center">
         <div className="flex flex-col align-middle items-center gap-4">
-          <h1 className="font-extrabold text-8xl tracking-tighter">Welcome to Vercode.</h1>
-          <h2 className="font-bold text-5xl tracking-normal leading-normal bg-gradient-to-r from-dark-purple to-light-purple bg-clip-text text-transparent">A online plataform to learn code in a different way!</h2>
-          <Checkbox size="lg" checked={isChecked} onChange={() => handleCheckbox()}>Não mostrar mais o tour.</Checkbox>
+          <h1 className="font-extrabold text-8xl tracking-tight">Bem-vindo ao Vercode.</h1>
+          <h2 className="font-bold text-5xl tracking-normal leading-normal bg-gradient-to-r from-dark-purple to-light-purple bg-clip-text text-transparent">
+            Aprenda programação de um jeito diferente!
+          </h2>
+          <Checkbox size="lg" checked={checkStore()} onChange={() => handleCheckbox()}>Não mostrar mais o tour.</Checkbox>
         </div>
       </div>
     </div>
