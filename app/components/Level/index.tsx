@@ -15,8 +15,8 @@ const Level = ({levelName}: {levelName: string}) => {
                     <ArrowRightIcon className="lg:w-8 2xl:w-10" />
                 </div>
                 <div className="flex gap-8">
-                    <span className="font-medium lg:text-base 2xl:text-xl text-medium-gray">Projects 0/25</span>
-                    <Status statusName={STATUS.IN_PROGRESS} />
+                    <span className="font-medium lg:text-base 2xl:text-xl text-medium-gray">Projetos 0/25</span>
+                    <Status statusName={STATUS.BLOCKED} />
                 </div>
             </div>
         </Link>

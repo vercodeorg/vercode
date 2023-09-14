@@ -15,7 +15,7 @@ const Level = ({params}: {params: {level: string}}) => {
             </div>
             <SimpleProgressBar/>
             <div className='w-full bg-white rounded-3xl mt-10 h-full px-14 py-10 flex flex-col gap-8'>
-                <LevelProject status={STATUS.COMPLETE}/>
+                <LevelProject status={STATUS.BLOCKED}/>
                 <LevelProject status={STATUS.IN_PROGRESS}/>
                 <LevelProject status={STATUS.IN_PROGRESS}/>
                 <LevelProject status={STATUS.BLOCKED}/>

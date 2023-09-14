@@ -1,10 +1,11 @@
 "use client"
+import InstructionsExerciseTable from "@/app/components/InstructionsExerciseTable"
+import SubmitDialog from "@/app/components/SubmitDialog"
+import dynamic from "next/dynamic"
 import Image from "next/image"
+import clang from "../../assets/icons/C.svg"
 import Coin from "../../assets/icons/Moeda.svg"
 import terminalIcon from "../../assets/icons/terminal.png"
-import { LinkIcon } from "@heroicons/react/24/outline"
-import dynamic from "next/dynamic"
-import SubmitDialog from "@/app/components/SubmitDialog"
 
 const CodeEditor = dynamic(
     () => import("@uiw/react-textarea-code-editor").then((mod) => mod.default),
@@ -14,29 +15,39 @@ const Exercise = ({ params }: { params: { exercise: string } }) => {
     return (
         <div className="w-full bg-cleaner-gray lg:px-20 2xl:px-28 2xl:pt-32 lg:pt-24 pb-24">
             <div className="bg-white w-full h-full rounded-3xl 2xl:p-16 lg:p-12">
-                <div className="flex gap-10">
-                    <div className="bg-black rounded-3xl w-fit px-11 py-8 flex flex-col items-center gap-4">
-                        <h1 className="font-semibold 2xl:text-5xl lg:text-4xl text-white tracking-tighter">
+                <div className="flex gap-16 mb-8">
+                    <div className="bg-black rounded-3xl w-fit px-11 py-8 flex flex-col gap-6">
+                        <h1 className="font-semibold 2xl:text-5xl lg:text-4xl text-cleaner-gray tracking-tighter">
                             {params.exercise.replace("%3A", " : ")}
                         </h1>
-                        <div className="flex items-center">
-                            <span className="font-semibold text-base text-[#F0B40D]">25</span>
-                            <div className="w-7">
-                                <Image src={Coin} alt="coin" />
+                        <div className="flex flex-col gap-3">
+                            <span className="text-light-gray font-normal text-lg">Recompensas:</span>
+                            <div className="flex flex-col ml-8">
+                                <div className="flex items-center">
+                                    <span className="font-semibold text-base text-[#F0B40D]">+ 25</span>
+                                    <div className="w-7">
+                                        <Image src={Coin} alt="coin" />
+                                    </div>
+                                </div>
+                                <span className="font-medium text-base text-light-gray">+ 230 xp</span>
                             </div>
                         </div>
-                        <span className="font-medium text-base text-light-gray">230 Exp</span>
                     </div>
                     <div className="flex flex-col gap-4 py-4">
-                        <div className="2xl:w-14 lg:w-10">
-                            <Image src={terminalIcon} alt="icon" />
-                        </div>
-                        <div className="flex gap-2">
-                            <a href="" className="font-regular 2xl:text-2xl lg:text-lg underline">Instructions.pdf</a>
-                            <LinkIcon className="2xl:w-7 lg:w-5" />
+                        <h2 className="text-3xl">Tecnologias usadas nesse exercício:</h2>
+                        <div className="flex gap-8">
+                            <div className="flex flex-col align-middle">
+                                <Image src={terminalIcon} alt="icon" className="w-10" />
+                                <span className="font-medium text-base text-dark-gray">+ 230 xp</span>
+                            </div>
+                            <div className="flex flex-col align-middle">
+                                <Image src={clang} alt="icon" />
+                                <span className="font-medium text-base text-dark-gray">+ 230 xp</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <InstructionsExerciseTable />
                 <div className="mt-8 h-80">
                     <CodeEditor
                         language="shell"
@@ -49,7 +60,7 @@ const Exercise = ({ params }: { params: { exercise: string } }) => {
                         }}
                     />
                 </div>
-                <SubmitDialog/>
+                <SubmitDialog />
             </div>
         </div>
     )
