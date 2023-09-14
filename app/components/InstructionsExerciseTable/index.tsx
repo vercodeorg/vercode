@@ -6,7 +6,7 @@ import Image from "next/image";
 const InstructionsExerciseTable = () => {
     return (
         <div>
-            <h2 className="text-2xl mb-2">Instructions:</h2>
+            <h2 className="text-2xl mb-2">Instruções:</h2>
             <Table hideHeader aria-label="Example table with dynamic content">
                 <TableHeader>
                     <TableColumn>
@@ -33,7 +33,7 @@ const InstructionsExerciseTable = () => {
                     </TableRow>
                     <TableRow className="border">
                         <TableCell>
-                            Turn-in directory:
+                            Diretório para envio:
                         </TableCell>
                         <TableCell>
                             ex00/
@@ -41,7 +41,7 @@ const InstructionsExerciseTable = () => {
                     </TableRow>
                     <TableRow className="border">
                         <TableCell>
-                            Files to turn in:
+                            Arquivos para envio:
                         </TableCell>
                         <TableCell>
                             z
@@ -49,15 +49,15 @@ const InstructionsExerciseTable = () => {
                     </TableRow>
                     <TableRow className="border">
                         <TableCell>
-                            Allowed Functions:
+                            Funções permitidas:
                         </TableCell>
                         <TableCell>
-                            False
+                            Write
                         </TableCell>
                     </TableRow>
                     <TableRow className="border">
                         <TableCell>
-                            Example:
+                            Exemplo:
                         </TableCell>
                         <TableCell>
                             <Image src={example} alt=""/>

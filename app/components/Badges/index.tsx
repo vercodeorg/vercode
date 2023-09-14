@@ -6,7 +6,7 @@ import Link from "next/link";
 const Badges = ({userId}: {userId: number}) => {
     return (
         <div className="lg:col-span-4 2xl:col-span-2 bg-cleaner-gray relative rounded-3xl lg:px-6 2xl:px-8 py-6">
-            <h2 className="font-semibold xl:text-2xl text-dark-gray tracking-tight">Badges</h2>
+            <h2 className="font-semibold xl:text-2xl text-dark-gray tracking-tight">Emblemas</h2>
             <div className="px-5 py-1 flex items-center gap-4">
                 <div className="w-28">
                     <Image src={badge} alt="bagde_icon" />

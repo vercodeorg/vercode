@@ -14,14 +14,14 @@ export const Navbar = () => {
                 <Image src={vercodeLogo} alt="vercode-name-logo" width={120} />
             </div>
             <div className="flex items-center gap-3">
-                <span>your coins:</span>
-                <div className="flex mr-8 gap-2 items-center">
+                <span>suas moedas:</span>
+                <div className="flex mr-8 gap-2 items-center coins">
                     <span className="font-semibold text-amber-500 text-sm">{coins}</span>
                     <Image src={vcoin} alt="coin-icon" width={25} />
                 </div>
                 <div className="flex items-center gap-2">
-                    <p className="text-sm">Pedro Henrique</p>
-                    <Link href={"/user"}>
+                    <Link href={"/user"} className="flex items-center gap-3 hover:bg-light-gray px-1 py-2 rounded-lg">
+                        <p className="text-sm">Pedro Henrique</p>
                         <Image src={userPic} alt="user-photo" className="rounded-full" width={36} height={36} />
                     </Link>
                 </div>

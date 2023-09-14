@@ -10,7 +10,7 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 const Project = ({ status }: { status: STATUS }) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const projectName = "Shell 00"
-    if (status == "Blocked") {
+    if (status == "Bloqueado") {
         return (
             <>
                 <div
@@ -26,7 +26,7 @@ const Project = ({ status }: { status: STATUS }) => {
                     </div>
                     <div className="w-full h-44 bg-[#202020] rounded-3xl 2xl:px-8 lg:px-6 2xl:pt-8 lg:py-6 flex flex-col justify-between">
                         <h3 className="project-description">
-                            Solve C language exercises
+                            Resolver exercícios em C
                         </h3>
                         <Difficulty level={DIFFICULTY.MEDIUM} />
                         <ProjectProgressBar color="text-light-gray" />
@@ -36,17 +36,17 @@ const Project = ({ status }: { status: STATUS }) => {
                     <ModalContent>
                         {(onClose) => (
                             <>
-                                <ModalHeader className="flex flex-col gap-1">Confirmation</ModalHeader>
+                                <ModalHeader className="flex flex-col gap-1">Confirmação</ModalHeader>
                                 <ModalBody>
-                                    Are you want to unlock this project for 45 coins ?
+                                    Você tem certeza que deseja desbloquear esse projeto por 45 coins ?
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button color="danger" variant="light" onPress={onClose}>
-                                        Cancel
+                                        Cancelar
                                     </Button>
                                     <Button color="primary" onPress={onClose}>
                                         <Link href={`/projects/${projectName.replace(/\s+/g, '')}`}>
-                                            Unlock
+                                            Desbloquear
                                         </Link>
                                     </Button>
                                 </ModalFooter>

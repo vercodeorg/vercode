@@ -21,7 +21,7 @@ const Exercise = ({ params }: { params: { exercise: string } }) => {
                             {params.exercise.replace("%3A", " : ")}
                         </h1>
                         <div className="flex flex-col gap-3">
-                            <span className="text-light-gray font-normal text-lg">Rewards:</span>
+                            <span className="text-light-gray font-normal text-lg">Recompensas:</span>
                             <div className="flex flex-col ml-8">
                                 <div className="flex items-center">
                                     <span className="font-semibold text-base text-[#F0B40D]">+ 25</span>
@@ -34,7 +34,7 @@ const Exercise = ({ params }: { params: { exercise: string } }) => {
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 py-4">
-                        <h2 className="text-3xl">Technologies used in this exercise:</h2>
+                        <h2 className="text-3xl">Tecnologias usadas nesse exercício:</h2>
                         <div className="flex gap-8">
                             <div className="flex flex-col align-middle">
                                 <Image src={terminalIcon} alt="icon" className="w-10" />

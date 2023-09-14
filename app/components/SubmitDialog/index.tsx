@@ -18,28 +18,28 @@ const SubmitDialog = () => {
         setIsLoading(true)
         setTimeout(() => {
             setIsLoading(false)
-            confetti({});
-            setSuccess(true)
-            increaseCoins(25);
+            // confetti({});
+            setFailure(true)
+            // increaseCoins(25);
         }, 1000)
     }
 
     if (success) return (
         <>
             <div onClick={onOpen} className="w-48 mt-8">
-                <ButtonSubmit>Submit</ButtonSubmit>
+                <ButtonSubmit>Enviar</ButtonSubmit>
             </div>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1">Congratulations</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Parabéns!</ModalHeader>
                             <ModalBody>
                                 <Lottie animationData={successAnimation} loop={false} />
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="primary" variant="light" onPress={onClose}>
-                                    Confirm
+                                    Confirmar
                                 </Button>
                             </ModalFooter>
                         </>
@@ -51,24 +51,24 @@ const SubmitDialog = () => {
     if (failure) return (
         <>
             <div onClick={onOpen} className="w-48 mt-8">
-                <ButtonSubmit>Submit</ButtonSubmit>
+                <ButtonSubmit>Enviar</ButtonSubmit>
             </div>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1">Ops! Your answer is not correct.</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Ops! Sua resposta não está correta.</ModalHeader>
                             <ModalBody>
                                 <div className="w-full">
                                     <div className="w-56 mx-auto">
-                                        <Lottie animationData={failureAnimation} loop={false} />
+                                        <Lottie animationData={failureAnimation} />
                                     </div>
-                                    <h2 className="text-lg text-blue-800">Don't get discouraged, you can do it! Try again</h2>
+                                    <h2 className="text-lg text-blue-800">Não desanime, você consegue! Tente novamente</h2>
                                 </div>
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="danger" variant="light" onPress={onClose}>
-                                    Close
+                                    Fechar
                                 </Button>
                             </ModalFooter>
                         </>
@@ -81,19 +81,19 @@ const SubmitDialog = () => {
     return (
         <>
             <div onClick={onOpen} className="w-48 mt-8">
-                <ButtonSubmit>Submit</ButtonSubmit>
+                <ButtonSubmit>Enviar</ButtonSubmit>
             </div>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1">Confirmation</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Confirmação</ModalHeader>
                             <ModalBody>
-                                Are you want to submit this exercise ?
+                                Você tem certeza que quer enviar essa resposta ?
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="danger" variant="light" onPress={onClose}>
-                                    Cancel
+                                    Cancelar
                                 </Button>
                                 <Button
                                     color="primary"
@@ -122,7 +122,7 @@ const SubmitDialog = () => {
                                             />
                                         </svg>}
                                 >
-                                    Submit
+                                    Enviar
                                 </Button>
                             </ModalFooter>
                         </>

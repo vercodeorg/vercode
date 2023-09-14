@@ -7,7 +7,7 @@ import Link from "next/link";
 const TechProgress = ({userId}: {userId: number}) => {
     return (
         <div className="col-span-6 row-span-1 bg-cleaner-gray relative rounded-3xl px-8 pt-6 pb-3">
-            <h2 className="font-semibold xl:text-2xl text-dark-gray tracking-tight">Tech Progress</h2>
+            <h2 className="font-semibold xl:text-2xl text-dark-gray tracking-tight">Progresso Tech</h2>
             <div>
                 <div className="lg:pt-2 2xl:pt-5">
                     <Image src={CIcon} alt="tech-icon" />
