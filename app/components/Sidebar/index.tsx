@@ -31,7 +31,7 @@ export const SideBar = () => {
                         <CubeTransparentIcon className="icons" />
                     </li>
                     <Link href={"/projects"} className="projects">
-                        <li className={pathname.startsWith("/projects") ? "active": ""}>
+                        <li className={pathname.startsWith("/projects") || pathname.startsWith("/exercise")  ? "active": ""}>
                             <FolderOpenIcon className="icons" />
                         </li>
                     </Link>
@@ -40,9 +40,9 @@ export const SideBar = () => {
                             <RectangleStackIcon className="icons" />
                         </li>
                     </Link>
-                    <li>
+                    {/* <li>
                         <ChatBubbleLeftRightIcon className="icons" />
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
         </div>
