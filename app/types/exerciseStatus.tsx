@@ -1,0 +1,6 @@
+export enum EXERCISE_STATUS {
+    NOT_STARTED,
+    COMPLETED,
+    FAILED 
+}
+
