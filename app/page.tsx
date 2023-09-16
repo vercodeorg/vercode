@@ -68,24 +68,9 @@ export default function Home() {
     ]
   })
 
-  function checkStore() {
-    if(localStorage.getItem("isChecked") === 'true'){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-  function handleCheckbox() {
-    localStorage.setItem('isChecked', 'true')
-  }
-  
   useEffect(() => {
-    localStorage.setItem('isChecked', 'false')
-    if (localStorage.getItem('isChecked') == 'false') {
-      setState({ run: true, sidebarOpen, stepIndex, steps })
-    }
-  }, [])
+    setState({ run: true, sidebarOpen, stepIndex, steps})
+  }, [run, sidebarOpen, stepIndex, steps])
 
   return (
     <div className="h-main grid">
@@ -116,7 +101,7 @@ export default function Home() {
           <h2 className="font-bold text-5xl tracking-normal leading-normal bg-gradient-to-r from-dark-purple to-light-purple bg-clip-text text-transparent">
             Aprenda programação de um jeito diferente!
           </h2>
-          <Checkbox size="lg" checked={checkStore()} onChange={() => handleCheckbox()}>Não mostrar mais o tour.</Checkbox>
+          <Checkbox size="lg">Não mostrar mais o tour.</Checkbox>
         </div>
       </div>
     </div>
