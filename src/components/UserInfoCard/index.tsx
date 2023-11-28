@@ -18,7 +18,7 @@ const UserInfoCard = ({ user }: { user: IUser | undefined }) => {
 					{user?.username}
 				</span>
 				<div className="flex gap-2 items-center">
-					<span className="font-semibold text-amber-500 text-sm">4653</span>
+					<span className="font-semibold text-amber-500 text-sm">{user?.coins}</span>
 					<Image src={Coin} alt="coin-icon" width={25} />
 				</div>
 				<span className="font-semibold text-medium-gray 2xl:text-sm lg:text-xs">

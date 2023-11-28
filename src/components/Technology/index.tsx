@@ -2,15 +2,15 @@ import Image from "next/image"
 import clang from "~/assets/icons/C.svg"
 
 type TypeProps = {
-    technologies: string[] | undefined,
-    xpPoints: number | undefined
+    technology?: string[],
+    xpPoints?: number
 }
 
-const Technology = ({technologies, xpPoints}: TypeProps) => {
+const Technology = ({technology, xpPoints}: TypeProps) => {
     return (
-        <div className="flex flex-col align-middle">
+        <div className="flex align-middle items-center gap-2">
             <Image src={clang} alt="icon" />
-            <span className="font-medium text-base text-dark-gray">+ {xpPoints} xp</span>
+            <span className="font-medium text-base text-blue-900">+ {xpPoints} xp</span>
         </div>
     )
 }

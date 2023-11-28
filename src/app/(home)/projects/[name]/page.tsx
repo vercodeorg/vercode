@@ -15,16 +15,28 @@ const Project = ({ params }: { params: { name: string } }) => {
         return up.project.name.toLowerCase().replace(/\s/g, '') === params.name.toLowerCase()
     })
 
-    const totalExercisesByProject = data?.usersExercises.filter((ue) => {
+    const currentUsersExercises = data?.usersExercises.filter((ue) => {
         return ue.exercise.project.name.toLowerCase().replace(/\s/g, '') === params.name.toLowerCase()
     })
 
-    const exercisesFinished = data?.usersExercises.filter((ue) => {
-        return ue.exerciseStatus === EXERCISE_STATUS.COMPLETED
+    const exercisesFinished = currentUsersExercises?.filter((ue) => {
+        return ue.exerciseStatus === EXERCISE_STATUS.SUCCESSFUL
     })
 
-    const currentExercisesAmount = exercisesFinished?.length
-    const maxExercisesAmount = totalExercisesByProject?.length
+    const totalCoinsByProject = currentUsersExercises?.reduce((total, ue) => total + ue.exercise.coinsToWin, 0)
+
+    const totalXpPoints = currentUsersExercises?.reduce((total, ue) => total + ue.exercise.xpToWin, 0)
+
+    const currentXpPoints = exercisesFinished?.reduce((total, ue) => total + ue.exercise.xpToWin, 0)
+
+    const projectProgressBarProps = {
+        color: "text-dark-gray",
+        min: exercisesFinished?.length,
+        max: currentUsersExercises?.length,
+        totalCoins: totalCoinsByProject,
+        totalXpPoints: totalXpPoints,
+        currentXpPoints: currentXpPoints
+    }
 
     useEffect(() => {
         getUser().then((res) => setData(res))
@@ -38,10 +50,10 @@ const Project = ({ params }: { params: { name: string } }) => {
                 </div>
             </div>
             <div className="w-96">
-                <ProjectProgressBar min={currentExercisesAmount} max={maxExercisesAmount} color="text-dark-gray" />
+                <ProjectProgressBar {...projectProgressBarProps} />
             </div>
             <div className="flex flex-col 2xl:gap-3 lg:gap-2 2xl:mt-10 lg:mt-6">
-                {totalExercisesByProject?.map((e) => (
+                {currentUsersExercises?.map((e) => (
                     <ExerciseItem
                         key={e.id}
                         id={e.exercise.id}

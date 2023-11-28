@@ -13,9 +13,28 @@ import { IUser } from "~/types/interfaces/api";
 const User = () => {
 	const [data, setData] = useState<IUser>();
 	const { getUser } = useContext(AuthContext);
-	useEffect(() => {
+	
+    useEffect(() => {
 		getUser().then((res) => setData(res));
 	}, [getUser]);
+
+    const userPoints = data?.usersPoints?.[data?.usersPoints.length - 1]
+
+    const userTechProgress = data?.usersTechProgress?.[data?.usersTechProgress.length - 1]
+
+    const rankProgressProps = {
+        xp: data?.xpPoints,
+        xpToUpgrade: userPoints?.rankProgress.requiredXpToUpdate,
+        level: userPoints?.rankProgress.level
+    }
+
+    const techProgressProps = {
+        username: data?.username,
+        xp: userTechProgress?.xpPoints,
+        xpToUpgrade: userTechProgress?.techProgress.xpToUpgrade,
+        level: userTechProgress?.techProgress.level 
+    }
+
 	return (
 		<>
 			<div className="w-full xl:h-48">
@@ -26,10 +45,10 @@ const User = () => {
 				<div className="w-full grid lg:grid-cols-11 2xl:grid-cols-5 grid-rows-1 gap-16 lg:gap-10">
 					<div className="lg:col-span-3 2xl:col-span-1" />
 					<Badges user={data} />
-					<RankProgress usersTechProgress={data?.usersTechProgress} />
+					<RankProgress {...rankProgressProps} />
 				</div>
 				<div className="w-full grid grid-cols-11 grid-rows-1 gap-16 lg:gap-10 mt-10">
-					<TechProgress user={data} />
+					<TechProgress {...techProgressProps} />
 					<Achievements />
 				</div>
 			</div>

@@ -44,7 +44,7 @@ const Level = ({ params }: { params: { levelId: string } }) => {
             <SimpleProgressBar min={currentProjectsAmount} max={maxProjectsAmount} />
             <div className='w-full bg-white rounded-3xl mt-10 h-full px-14 py-10 flex flex-col gap-8'>
                 {data?.usersProjects.map((up) => (
-                    <LevelProject key={up.id} name={up.project.name} description='Resolver exercícios em C' status={up.projectStatus} />
+                    <LevelProject key={up.id} usersProjects={up} />
                 ))}
             </div>
         </div>

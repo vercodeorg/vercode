@@ -2,19 +2,22 @@ import Image from "next/image"
 import Coin from "../../assets/icons/Moeda.svg"
 
 type TypeProps = {
-    color: string,
-    min: number | undefined,
-    max: number | undefined
+    color: string 
+    min?: number 
+    max?: number
+    totalCoins?: number
+    totalXpPoints?: number
+    currentXpPoints?: number
 }
 
-const ProjectProgressBar = (props: TypeProps) => {
-    const progressPercent = (100 * props.min!) / props.max!;
+const ProjectProgressBar = ( {color, min, max, totalCoins, totalXpPoints, currentXpPoints}: TypeProps) => {
+    const progressPercent = (100 * min!) / max!;
     return (
         <div>
             <div className="flex justify-between items-center">
-                <span className={`font-normal lg:text-x 2xl:text-sm ${props.color} mb-1`}>{props.min}/{props.max}</span>
+                <span className={`font-normal lg:text-x 2xl:text-sm ${color} mb-1`}>{min}/{max}</span>
                 <div className="flex items-center">
-                    <span className="font-semibold text-xs text-[#F0B40D]">650</span>
+                    <span className="font-semibold text-xs text-[#F0B40D]">{totalCoins}</span>
                     <div className="w-7">
                         <Image src={Coin} alt="coin" />
                     </div>
@@ -24,7 +27,7 @@ const ProjectProgressBar = (props: TypeProps) => {
                 <div className="bg-gradient-to-r from-dark-purple to-light-purple relative h-4 rounded-xl"
                     style={{ width: `${progressPercent}%` }} />
             </div>
-            <span className={`font-normal lg:text-xs 2xl:text-sm ${props.color} mb-1`}>5.000/5.000 Exp</span>
+            <span className={`font-normal lg:text-xs 2xl:text-sm ${color} mb-1`}>{currentXpPoints} xp/ {totalXpPoints} xp</span>
         </div>
     )
 }

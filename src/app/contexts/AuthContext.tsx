@@ -5,10 +5,10 @@ import { getProfile } from '~/fetch/getProfile';
 import { useRouter } from 'next/navigation';
 import { useStudentStore } from '~/store/student';
 import { getUserData } from '~/fetch/getUser';
-import { TUser } from '~/types/typings.td';
+import { IUser } from '~/types/interfaces/api';
 
 type AuthContextData = {
-    getUser: () => Promise<TUser | undefined>,
+    getUser: () => Promise<IUser | undefined>,
     logOut: () => void
 }
 

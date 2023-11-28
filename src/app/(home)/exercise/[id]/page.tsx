@@ -8,17 +8,32 @@ import { IUser } from "~/types/interfaces/api"
 import { AuthContext } from "~/app/contexts/AuthContext"
 import Editor from "@monaco-editor/react"
 import Technology from "~/components/Technology"
+import { Button } from "@nextui-org/react"
+import { compileExerciseCode } from "~/fetch/compileExerciseCode"
 
 const Exercise = ({ params }: { params: { id: string } }) => {
     const [data, setData] = useState<IUser>()
+    const [exerciseCodeResult, setExerciseCodeResult] = useState<string>()
+    const [compileOutput, setCompileOutput] = useState<string>()
     const { getUser } = useContext(AuthContext)
 
-    function handleEditorDidMount(editor: any, monaco: any) {
+    function handleEditorChange(value: any) {
+        setExerciseCodeResult(value)
     }
 
     const userExercise = data?.usersExercises.find((ue) => {
         return ue.exercise.id.toString() === params.id
     })
+
+    async function compileCode(){
+       try{
+            const compileOutput = await compileExerciseCode(userExercise?.id, exerciseCodeResult);
+            console.log(compileOutput)
+            setCompileOutput(compileOutput.data.stdout)
+        }catch(error){
+            console.error(error)
+        } 
+    }
 
     const exercise = userExercise?.exercise
 
@@ -60,15 +75,15 @@ const Exercise = ({ params }: { params: { id: string } }) => {
                     allowedFunctions={exercise?.allowedFunctions}
                     example={exercise?.imageInstructions}
                 />
-                <div className="mt-8 h-80">
+                <div className="mt-8 h-[500px] flex flex-col">
                     <Editor
                         height="100%"
                         defaultLanguage="c"
                         defaultValue="// escreva sua resposta aqui!"
-                        onMount={handleEditorDidMount}
+                        onChange={handleEditorChange}
                     />
                 </div>
-                <SubmitDialog />
+                <SubmitDialog codeResult={exerciseCodeResult} userExercise={userExercise} />
             </div>
         </div>
     )

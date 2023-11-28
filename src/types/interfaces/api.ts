@@ -34,7 +34,6 @@ export interface IUsersTechProgress {
 
 export interface IUsersPoints {
 	id: number;
-	xpPoints: number;
 	rankProgress: IRankProgress;
 }
 

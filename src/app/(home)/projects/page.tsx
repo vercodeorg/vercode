@@ -21,7 +21,6 @@ const Projects = () => {
                         key={up.id}
                         status={up.projectStatus}
                         name={up.project.name}
-                        description="Resolver exercícios em C"
                         difficulty={up.project.difficulty} />
                 ))}
             </div>

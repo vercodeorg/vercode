@@ -31,43 +31,19 @@ const InstructionsExerciseTable = (props: TypeProps) => {
                         </TableCell>
                     </TableRow>
                     <TableRow className="border">
-                        <TableCell>
-
-                        </TableCell>
-                        <TableCell>
-                            Only the best know how to display Z
-                        </TableCell>
-                    </TableRow>
-                    <TableRow className="border">
-                        <TableCell>
-                            Diretório para envio:
-                        </TableCell>
-                        <TableCell>
-                            {props.dirName}
-                        </TableCell>
-                    </TableRow>
-                    <TableRow className="border">
-                        <TableCell>
-                            Arquivos para envio:
-                        </TableCell>
-                        <TableCell>
-                            {props.files}
-                        </TableCell>
-                    </TableRow>
-                    <TableRow className="border">
-                        <TableCell>
+                        <TableCell className="font-medium">
                             Funções permitidas:
                         </TableCell>
-                        <TableCell>
+                        <TableCell className="font-semibold">
                             {props.allowedFunctions}
                         </TableCell>
                     </TableRow>
                     <TableRow className="border">
-                        <TableCell>
+                        <TableCell className="font-medium">
                             Exemplo:
                         </TableCell>
-                        <TableCell>
-                            <img width={100} height={100} src={props?.example} alt="" />
+                        <TableCell >
+                            <img className="w-full" height={100} src={props?.example} alt="" />
                         </TableCell>
                     </TableRow>
                 </TableBody>

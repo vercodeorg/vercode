@@ -6,19 +6,53 @@ import Link from "next/link"
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import { STATUS } from "~/types/enums/status"
 import { DIFFICULTY } from "~/types/enums/difficulty"
+import { useContext, useEffect, useState } from "react"
+import { IUser } from "~/types/interfaces/api"
+import { AuthContext } from "~/app/contexts/AuthContext"
+import { EXERCISE_STATUS } from "~/types/enums/exerciseStatus"
+import { formatPathname } from "~/utils/formatPathname"
 
 type TypeProps = {
     status: STATUS,
     name: string,
-    description: string,
     difficulty: DIFFICULTY,
 }
 
 const Project = (props: TypeProps) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const projectName = props.name.replace(/\s/g, '').toLowerCase();
-    const href = `/projects/${projectName.startsWith('#') ? encodeURIComponent(projectName.substring(1)) : encodeURIComponent(projectName)}`;
-    if (props.status == "Bloqueado") {
+    const [data, setData] = useState<IUser>()
+    const { getUser } = useContext(AuthContext)
+
+    const currentUsersExercises = data?.usersExercises.filter((ue) => {
+        return ue.exercise.project.name.toLowerCase() === props.name.toLowerCase()
+    })
+
+    const exercisesFinished = currentUsersExercises?.filter((ue) => {
+        return ue.exerciseStatus === EXERCISE_STATUS.SUCCESSFUL
+    })
+
+    const totalCoinsByProject = currentUsersExercises?.reduce((total, ue) => total + ue.exercise.coinsToWin, 0)
+
+    const totalXpPoints = currentUsersExercises?.reduce((total, ue) => total + ue.exercise.xpToWin, 0)
+
+    const currentXpPoints = exercisesFinished?.reduce((total, ue) => total + ue.exercise.xpToWin, 0)
+
+    const projectProgressBarProps = {
+        color: "text-light-gray",
+        min: exercisesFinished?.length,
+        max: currentUsersExercises?.length,
+        totalCoins: totalCoinsByProject,
+        totalXpPoints: totalXpPoints,
+        currentXpPoints: currentXpPoints
+    }
+
+    const url = 'projects/'+formatPathname(props.name)
+
+    useEffect(() => {
+        getUser().then((res) => setData(res))
+    }, [getUser])
+
+    if (props.status === STATUS.BLOCKED) {
         return (
             <>
                 <div
@@ -32,12 +66,9 @@ const Project = (props: TypeProps) => {
                             {props.name}
                         </h2>
                     </div>
-                    <div className="w-full h-44 bg-[#202020] rounded-3xl 2xl:px-8 lg:px-6 2xl:pt-8 lg:py-6 flex flex-col justify-between">
-                        <h3 className="project-description">
-                            {props.description}
-                        </h3>
+                    <div className="w-full h-44 bg-[#202020] rounded-3xl 2xl:px-8 lg:px-6 2xl:pt-8 lg:py-6 flex flex-col gap-3 justify-around">
                         <Difficulty level={DIFFICULTY.MEDIUM} />
-                        <ProjectProgressBar color="text-light-gray" />
+                        <ProjectProgressBar  {...projectProgressBarProps}/>
                     </div>
                 </div>
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -53,7 +84,7 @@ const Project = (props: TypeProps) => {
                                         Cancelar
                                     </Button>
                                     <Button color="primary" onPress={onClose}>
-                                        <Link href={href}>
+                                        <Link href={url}>
                                             Desbloquear
                                         </Link>
                                     </Button>
@@ -66,7 +97,7 @@ const Project = (props: TypeProps) => {
         )
     }
     return (
-        <Link href={href}>
+        <Link href={url}>
             <div className="2xl:w-72 lg:w-64 2xl:h-96 lg:h-[330px] bg-white rounded-3xl flex flex-col justify-between cursor-pointer">
                 <div className="mr-3 mt-3 self-end">
                     <Status statusName={props.status} />
@@ -76,12 +107,9 @@ const Project = (props: TypeProps) => {
                         {props.name}
                     </h2>
                 </div>
-                <div className="w-full h-44 bg-[#202020] rounded-3xl 2xl:px-8 lg:px-6 2xl:pt-8 lg:py-6 flex flex-col justify-between">
-                    <h3 className="project-description">
-                        {props.description}
-                    </h3>
+                <div className="w-full h-44 bg-[#202020] rounded-3xl 2xl:px-8 lg:px-6 2xl:pt-8 lg:py-6 flex flex-col gap-3 justify-around">
                     <Difficulty level={props.difficulty} />
-                    <ProjectProgressBar color="text-light-gray" />
+                    <ProjectProgressBar {...projectProgressBarProps} />
                 </div>
             </div>
         </Link>

@@ -1,4 +1,4 @@
-import { DIFFICULTY, getColor } from "~/types/difficulty"
+import { DIFFICULTY, getColor } from "~/types/enums/difficulty"
 
 const Difficulty = ({level}: {level: DIFFICULTY}) => {   
     return (
