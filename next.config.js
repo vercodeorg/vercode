@@ -4,7 +4,10 @@ const nextConfig = {}
 // next.config.js
 const removeImports = require("next-remove-imports")();
 module.exports = removeImports({
-  experimental: { esmExternals: true }
+  images: {
+    domains: ['vercode.s3.sa-east-1.amazonaws.com']
+  },
+  experimental: { esmExternals: true },
 });
 
 
