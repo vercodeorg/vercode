@@ -1,10 +1,10 @@
 import { cookie } from "~/service/cookies";
-import { TUserExerciseById } from "~/types/typings.td";
+import { IUserExerciseById } from "~/types/interfaces/api";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 const accessToken = cookie.get(null, "auth_token")
 
-export const getExercise = async (userId: number | undefined, exerciseId: number): Promise<TUserExerciseById> => {
+export const getExercise = async (userId: number | undefined, exerciseId: number): Promise<IUserExerciseById> => {
     const url = API_URL + `users/${userId}/exercise/${exerciseId}`
     const response = await fetch(url, {
         method: 'GET',
