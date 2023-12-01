@@ -1,11 +1,14 @@
 "use client"
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, User } from "@nextui-org/react"
 import Link from "next/link"
-import { useContext } from "react"
-import { AuthContext } from "~/app/contexts/AuthContext"
 
-const UserDropdown = () => {
-    const { logOut } = useContext(AuthContext)
+interface TypeProps {
+    logOut: () => void,
+    username?: string,
+    name?: string,
+}
+
+const UserDropdown = (props: TypeProps) => {
     return (
         <div className="h-full">
             <Dropdown placement="bottom-start" className="h-full">
@@ -14,24 +17,24 @@ const UserDropdown = () => {
                         as="button"
                         avatarProps={{
                             isBordered: true,
-                            src: "/eu3.jpeg",
+                            src: "/user-default-photo.png",
                         }}
                         className="transition-transform"
-                        description="@prince"
-                        name="Pedro Henrique"
+                        description={`@ ${props.username}`}
+                        name={props.name}
                     />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="User Actions" variant="flat">
                     <DropdownItem key="profile" className="h-14 gap-2">
-                        <p className="font-bold">Signed in as</p>
-                        <p className="font-bold">@prince</p>
+                        <p className="font-bold">Logado como</p>
+                        <p className="font-bold">@{props.username}</p>
                     </DropdownItem>
                     <DropdownItem key="configurations">
                         <Link href={"/user"}>
                             Perfil
                         </Link>
                     </DropdownItem>
-                    <DropdownItem key="logout" color="danger" onClick={logOut}>
+                    <DropdownItem key="logout" color="danger" onClick={props.logOut}>
                         Sair
                     </DropdownItem>
                 </DropdownMenu>
