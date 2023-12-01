@@ -13,6 +13,7 @@ import { IUser } from "~/types/interfaces/api";
 const User = () => {
 	const [data, setData] = useState<IUser>();
 	const { getUser } = useContext(AuthContext);
+    console.log(data)
 	
     useEffect(() => {
 		getUser().then((res) => setData(res));

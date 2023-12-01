@@ -1,15 +1,15 @@
-import { EXERCISE_STATUS } from "../types/exerciseStatus";
+import { EXERCISE_STATUS } from "~/types/enums/exerciseStatus";
 
 export const exercises = [
     {
         id: 1,
         name: "Exercise 00: Z",
-        status: EXERCISE_STATUS.COMPLETED
+        status: EXERCISE_STATUS.SUCCESSFUL
     },
     {
         id: 2,
         name: "Exercise 01: testShell00",
-        status: EXERCISE_STATUS.COMPLETED
+        status: EXERCISE_STATUS.SUCCESSFUL
     },
     {
         id: 3,

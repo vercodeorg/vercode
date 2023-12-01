@@ -1,6 +1,6 @@
-import { BadgeType } from "~/types/typings.td"
+import { IBadge } from "~/types/interfaces/api"
 
-const Badge = ({badge}: {badge: BadgeType}) => {
+const Badge = ({badge}: {badge: IBadge }) => {
     return (
         <div className="flex flex-col items-center w-fit">
             <div className="w-48">

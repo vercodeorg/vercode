@@ -21,7 +21,11 @@ const Projects = () => {
                         key={up.id}
                         status={up.projectStatus}
                         name={up.project.name}
-                        difficulty={up.project.difficulty} />
+                        difficulty={up.project.difficulty}
+                        projectId={up.project.id}
+                        usersProjectId={up.id}
+                        unlockCost={up.project.unlockCost}
+                        />
                 ))}
             </div>
         </div>
