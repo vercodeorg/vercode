@@ -18,7 +18,7 @@ const Badges = ({ user }: { user: IUser | undefined }) => {
 						{badge?.name}
 					</h3>
 					<span className="font-semibold text-medium-gray lg:text-sm 2xl:text-base">
-						RANK - LV {user?.usersPoints[0].rankProgress.level}
+						RANK - LV {user?.level}
 					</span>
 				</div>
 			</div>

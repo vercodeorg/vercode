@@ -12,6 +12,7 @@ export const getUserData = async (userId: number): Promise<IUser> => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
+        cache: 'no-cache'
     });
     if (!response.ok) {
         throw new Error('Network response was not ok')

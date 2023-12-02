@@ -12,14 +12,12 @@ import { AuthContext } from "~/app/contexts/AuthContext";
 const User = () => {
 	const { user } = useContext(AuthContext);
 
-    const userPoints = user?.usersPoints?.[user?.usersPoints.length - 1]
-
     const userTechProgress = user?.usersTechProgress?.[user?.usersTechProgress.length - 1]
 
     const rankProgressProps = {
         xp: user?.xpPoints,
-        xpToUpgrade: userPoints?.rankProgress.requiredXpToUpdate,
-        level: userPoints?.rankProgress.level
+        xpToUpgrade: user?.xpToUpgrade,
+        level: user?.level
     }
 
     const techProgressProps = {

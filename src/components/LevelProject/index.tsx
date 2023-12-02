@@ -13,17 +13,16 @@ import {
 } from "@nextui-org/react";
 import { STATUS } from "~/types/enums/status";
 import { formatPathname } from "~/utils/formatPathname";
-import { IUser, IUsersProjects } from "~/types/interfaces/api";
-import { useContext, useEffect, useState } from "react";
+import { IUsersProjects } from "~/types/interfaces/api";
+import { useContext, useEffect} from "react";
 import { AuthContext } from "~/app/contexts/AuthContext";
 import { EXERCISE_STATUS } from "~/types/enums/exerciseStatus";
 
 const LevelProject = ({usersProjects}: {usersProjects: IUsersProjects}) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const [data, setData] = useState<IUser>()
-    const { getUser } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
-    const currentUsersExercises = data?.usersExercises.filter((ue) => {
+    const currentUsersExercises = user?.usersExercises.filter((ue) => {
         return ue.exercise.project.name.toLowerCase() === usersProjects.project.name.toLowerCase()
     })
 
@@ -46,9 +45,6 @@ const LevelProject = ({usersProjects}: {usersProjects: IUsersProjects}) => {
         currentXpPoints: currentXpPoints
     }
 
-    useEffect(() => {
-        getUser().then((res) => setData(res))
-    }, [getUser])
     const url = 'projects/'+formatPathname(usersProjects?.project?.name)
 
     if (usersProjects.projectStatus === STATUS.BLOCKED) {
