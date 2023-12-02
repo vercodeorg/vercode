@@ -1,37 +1,27 @@
 "use client"
 import Link from "next/link"
 import { Button } from "@nextui-org/react";
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Input } from "@nextui-org/react";
-import { singIn } from "~/fetch/singIn";
-import { useRouter } from 'next/navigation'
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
-import { cookie } from "~/service/cookies";
-
-export type LoginResponse = {
-    access_token: string
-}
+import { AuthContext } from "~/app/contexts/AuthContext";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isVisible, setIsVisible] = useState(false);
+    const { signIn } = useContext(AuthContext)
     const toggleVisibility = () => setIsVisible(!isVisible);
-    const router = useRouter();
 
     const handleSubmit = async () => {
         if (email && password) {
-            const data: LoginResponse = await singIn(email, password);
-            if (!data) {
-                return toast("Email ou senha incorretos!")
+            try {
+                await signIn({ email, password });
+            } catch (err) {
+                return toast("Email ou senha inválidos")
             }
-            cookie.set(null, 'auth_token', data.access_token, {
-                maxAge: 60 * 60 * 24,
-                path: '/',
-            });
         }
-        router.push('/')
     }
 
     return (

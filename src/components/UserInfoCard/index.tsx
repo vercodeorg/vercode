@@ -4,7 +4,7 @@ import Coin from "../../assets/icons/Moeda.svg";
 import { IUser } from "~/types/interfaces/api";
 
 const UserInfoCard = ({ user }: { user: IUser | undefined }) => {
-	const level = user?.usersPoints[0].rankProgress.level;
+	const level = user?.usersPoints?.[0].rankProgress.level;
 	return (
 		<div className="2xl:w-64 lg:w-64  2xl:h-[396px] rounded-3xl pt-10 pb-20 bg-[#F5F5F7] flex flex-col justify-between items-center absolute top-14 lg:mt-16 2xl:mt-24">
 			<div className="lg:w-28 lg:h-28 2xl:w-32 2xl:h-32 mb-4">

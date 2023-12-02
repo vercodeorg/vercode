@@ -2,7 +2,7 @@ import { cookie } from "~/service/cookies";
 import { IUser } from "~/types/interfaces/api";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
-const accessToken = cookie.get(null, "auth_token")
+const token = cookie.get(null, "auth_token")
 
 export const getUserData = async (userId: number): Promise<IUser> => {
     const url = API_URL + `users/${userId}`
@@ -10,7 +10,7 @@ export const getUserData = async (userId: number): Promise<IUser> => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`
+            'Authorization': `Bearer ${token}`
         },
     });
     if (!response.ok) {
