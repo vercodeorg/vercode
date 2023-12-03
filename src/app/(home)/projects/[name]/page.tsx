@@ -5,17 +5,15 @@ import ExerciseItem from "~/components/ExerciseItem"
 import ProjectProgressBar from "~/components/ProjectProgressBar"
 import Status from "~/components/Status"
 import { EXERCISE_STATUS } from "~/types/enums/exerciseStatus"
-import { IUser } from "~/types/interfaces/api"
 
 const Project = ({ params }: { params: { name: string } }) => {
-    const [data, setData] = useState<IUser>()
-    const { getUser } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
-    const userProject = data?.usersProjects.find((up) => {
+    const userProject = user?.usersProjects.find((up) => {
         return up.project.name.toLowerCase().replace(/\s/g, '') === params.name.toLowerCase()
     })
 
-    const currentUsersExercises = data?.usersExercises.filter((ue) => {
+    const currentUsersExercises = user?.usersExercises.filter((ue) => {
         return ue.exercise.project.name.toLowerCase().replace(/\s/g, '') === params.name.toLowerCase()
     })
 
@@ -38,9 +36,6 @@ const Project = ({ params }: { params: { name: string } }) => {
         currentXpPoints: currentXpPoints
     }
 
-    useEffect(() => {
-        getUser().then((res) => setData(res))
-    }, [getUser])
     return (
         <div className="w-full h-screen bg-cleaner-gray lg:px-20 2xl:px-28 py-16">
             <div className="flex items-center gap-8 lg:mb-6 2xl:mb-10">

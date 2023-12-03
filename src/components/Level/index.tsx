@@ -2,26 +2,22 @@
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Status from "../Status";
-import { IUser, IUsersLevels } from "~/types/interfaces/api";
 import { STATUS } from "~/types/enums/status";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "~/app/contexts/AuthContext";
+import { IUsersLevels } from "~/types/interfaces/api";
 
 const Level = ({ usersLevels}: { usersLevels: IUsersLevels}) => {
-    const [data, setData] = useState<IUser>()
-    const { getUser } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
-    const projects = data?.usersProjects.filter((up) => {
+    const projects = user?.usersProjects.filter((up) => {
         return up.project.level.name.toLowerCase() === usersLevels.level.name.toLowerCase()
     })
 
-    const finishedProjects = data?.usersProjects.filter((up) => {
+    const finishedProjects = user?.usersProjects.filter((up) => {
         return up.projectStatus === STATUS.COMPLETED
     })
         
-    useEffect(() => {
-        getUser().then((res) => setData(res))
-    }, [getUser])
 	return (
 		<Link href={`/levels/${usersLevels.level.id}`}>
 			<div className="w-full h-20 mb-6 flex justify-between items-center px-8 rounded-xl drop-shadow-xl bg-white">

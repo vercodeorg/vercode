@@ -1,19 +1,21 @@
+type SignInRequestData = {
+    email: string;
+    password: string;
+}
 
-export async function singIn(email: string, password: string){
-    try{
+export async function signInRequest(data: SignInRequestData){
+    try {
         const url = process.env.NEXT_PUBLIC_API_URL + "auth/login"
-        console.log(url)
         const response = await fetch(url, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email: email, password: password})
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: data.email, password: data.password })
         })
-        console.log(response.body)
         if (!response.ok) {
-            throw new Error('Failed to fetch data: '+response.status)
+            throw new Error('Failed to fetch data: ' + response.status)
         }
         return response.json()
-    }catch(err){
-        console.error('Error: '+err);
+    } catch (err) {
+        console.error('Error: ' + err);
     }
 }

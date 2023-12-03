@@ -12,16 +12,15 @@ import { Button } from "@nextui-org/react"
 import { compileExerciseCode } from "~/fetch/compileExerciseCode"
 
 const Exercise = ({ params }: { params: { id: string } }) => {
-    const [data, setData] = useState<IUser>()
     const [exerciseCodeResult, setExerciseCodeResult] = useState<string>()
     const [compileOutput, setCompileOutput] = useState<string>()
-    const { getUser } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     function handleEditorChange(value: any) {
         setExerciseCodeResult(value)
     }
 
-    const userExercise = data?.usersExercises.find((ue) => {
+    const userExercise = user?.usersExercises.find((ue) => {
         return ue.exercise.id.toString() === params.id
     })
 
@@ -37,9 +36,6 @@ const Exercise = ({ params }: { params: { id: string } }) => {
 
     const exercise = userExercise?.exercise
 
-    useEffect(() => {
-        getUser().then((res) => setData(res))
-    }, [getUser])
     return (
         <div className="w-full bg-cleaner-gray lg:px-20 2xl:px-28 2xl:pt-32 lg:pt-24 pb-24">
             <div className="bg-white w-full h-full rounded-3xl 2xl:p-16 lg:p-12">

@@ -6,6 +6,8 @@ export interface IUser {
 	id: number;
 	username: string;
 	coins: number;
+    level: number;
+    xpToUpgrade: number;
 	xpPoints: number;
 	usersBadges: IUsersBadges[];
 	usersPoints: IUsersPoints[];

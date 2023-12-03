@@ -24,10 +24,9 @@ interface TypeProps {
 
 const Project = (props: TypeProps) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const [data, setData] = useState<IUser>()
     const [unlocked, setUnlocked] = useState<boolean>(false)
     const [showResultModal, setShowResultModal] = useState<boolean>(false);
-    const { getUser } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const handleUnlockProject = async () => {
         const unlockResult = await unlockProject(props.usersProjectId, props.projectId)
@@ -39,7 +38,7 @@ const Project = (props: TypeProps) => {
         setShowResultModal(true)
     }
 
-    const currentUsersExercises = data?.usersExercises.filter((ue) => {
+    const currentUsersExercises = user?.usersExercises.filter((ue) => {
         return ue.exercise.project.name.toLowerCase() === props.name.toLowerCase()
     })
 
@@ -63,10 +62,6 @@ const Project = (props: TypeProps) => {
     }
 
     const url = 'projects/' + formatPathname(props.name)
-
-    useEffect(() => {
-        getUser().then((res) => setData(res))
-    }, [getUser])
 
     return (
         <>
