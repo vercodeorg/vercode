@@ -1,9 +1,13 @@
-import { destroyCookie , parseCookies, setCookie as setNookies } from 'nookies';
+import { destroyCookie, parseCookies, setCookie as setNookies } from "nookies";
 
 export function getCookie(ctx: any | null | undefined, key: string) {
   return parseCookies(ctx)[key];
 }
-export function delCookie(ctx: any | null | undefined, key: string, options?: any) {
+export function delCookie(
+  ctx: any | null | undefined,
+  key: string,
+  options?: any,
+) {
   return destroyCookie(ctx, key, options);
 }
 export function setCookie(

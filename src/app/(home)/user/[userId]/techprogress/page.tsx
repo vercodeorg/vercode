@@ -1,4 +1,4 @@
-import TechProgressBar from "~/components/TechProgressBar"
+import TechProgressBar from "~/components/TechProgressBar";
 
 const TechProgress = () => {
   return (
@@ -13,6 +13,6 @@ const TechProgress = () => {
         <TechProgressBar />
       </div>
     </div>
-  )
-}
-export default TechProgress
+  );
+};
+export default TechProgress;
